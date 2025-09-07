@@ -1,0 +1,20 @@
+﻿# make sure we're in the repo
+Set-Location -Path "C:\Users\Lenovo\Hbd-Madi"
+
+# write clipboard contents into index.html (overwrites)
+Get-Clipboard | Out-File -FilePath index.html -Encoding utf8
+
+# verify index.html was created & preview
+Write-Host "`n--- index.html exists? ---`n"
+Test-Path index.html
+
+Write-Host "`n--- first 5 lines of index.html ---`n"
+Get-Content index.html -TotalCount 5
+
+# git: add, commit, push
+git add index.html
+# show status to see if there are changes to commit
+git status --porcelain
+# commit only if there are staged changes
+if ((git status --porcelain) -ne "") { git commit -m "Add index.html (SPA)"; git push -u origin main } else { Write-Host "`nNo changes to commit (index.html may already be committed). Attempting git push just in case...`n"; git push -u origin main }
+
