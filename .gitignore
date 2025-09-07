@@ -1,0 +1,12 @@
+﻿# system
+.DS_Store
+Thumbs.db
+
+# vscode
+.vscode/
+
+# node
+node_modules/
+
+# build artifacts
+dist/
