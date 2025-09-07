@@ -131,7 +131,7 @@
       <!-- QUOTES / GALLERY VIEW -->
       <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
         <h2 class="lead">Romantic Quotes</h2>
-        <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
+        <div class="quote" id="quoteBox">"Mere Jaan." — </div>
 
         <section aria-label="Gallery">
           <div class="grid" id="gallery">
@@ -224,7 +224,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const audio = window._bgAudio;
   audio.loop = true;
   audio.preload = 'auto';
-  const sources = {505:'assets/505.mp3', lover:'assets/lover.mp3'};
+  const sources = {
+  505: 'https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav',
+  lover: 'https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav'
+};
+
 
   async function headExists(url){
     try {
@@ -269,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
      Typewriter (only once)
      ============================ */
   (function typewriterInit(){
-    const letterText = `Happy Birthday, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
+    const letterText = `Happy Birthday, mere jaan.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
     let tpos=0, started=false; const tw = $('#typewriter');
     function startTypewriter(speed = 36){
       if(!tw || started) return;
@@ -357,12 +361,12 @@ document.addEventListener('DOMContentLoaded', function () {
      ============================ */
   (function galleryInit(){
     const quotes = [
-      "I love you not only for what you are, but for what I am when I am with you. — Roy Croft",
+      "I love you not only for what you are, but for what I am when I am with you. ",
       "You are my today and all of my tomorrows. — Leo Christopher",
       "I look at you and see the rest of my life in front of my eyes.",
-      "You are every reason, every hope, and every dream I've ever had. — Nicholas Sparks",
-      "My heart is perfect because you are inside. — Unknown",
-      "Where there is love there is life. — Mahatma Gandhi"
+      "You are every reason, every hope, and every dream I've ever had. ",
+      "My heart is perfect because you are inside. ",
+      "Where there is love there is life."
     ];
     $('#randomQuote')?.addEventListener('click', ()=> $('#quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
 
