@@ -91,7 +91,7 @@
     </header>
 
     <main id="app">
-      <!-- HOME / CELEBRATION VIEW (unchanged) -->
+      <!-- HOME / CELEBRATION VIEW -->
       <section id="view-home" class="view" aria-hidden="false">
         <section class="hero" role="banner">
           <div class="confetti" id="confetti" aria-hidden="true"></div>
@@ -133,11 +133,11 @@
         </section>
       </section>
 
-      <!-- QUOTES / GALLERY VIEW (added small player UI + extra images) -->
+      <!-- QUOTES / GALLERY VIEW (simplified to 3 parts, no captions) -->
       <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
         <h2 class="lead">Romantic Quotes</h2>
 
-        <!-- small quotes music player (select + play/pause) -->
+        <!-- small quotes music player -->
         <div class="quotes-player" role="region" aria-label="Quotes music player">
           <label for="quotesSongSelect" style="font-weight:700;color:#856b79;margin-right:6px">Play song:</label>
           <select id="quotesSongSelect" aria-label="Select romantic song">
@@ -149,54 +149,35 @@
           <span id="quotesAudioStatus" style="margin-left:10px;font-size:13px;color:#856b79"></span>
         </div>
 
+        <!-- quote box -->
         <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
-
-        <section aria-label="Gallery">
-          <div class="grid" id="gallery">
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem1.jpg" data-caption="That smile">
-              <img data-src="assets/mem1.jpg" loading="lazy" alt="Memory 1" class="lazy-img">
-            </div>
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem2.jpg" data-caption="Our walk together">
-              <img data-src="assets/mem2.jpg" loading="lazy" alt="Memory 2" class="lazy-img">
-            </div>
-
-            <div class="card-media" role="button" tabindex="0" data-type="video" data-src="assets/clip1.mp4" data-caption="A little moment">
-              <video data-src="assets/clip1.mp4" poster="" muted playsinline class="lazy-video"></video>
-            </div>
-            <div class="card-media" role="button" tabindex="0" data-type="video" data-src="assets/clip2.mp4" data-caption="Funny memory">
-              <video data-src="assets/clip2.mp4" poster="" muted playsinline class="lazy-video"></video>
-            </div>
-
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem3.jpg" data-caption="Sunset with you">
-              <img data-src="assets/mem3.jpg" loading="lazy" alt="Memory 3" class="lazy-img">
-            </div>
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem4.jpg" data-caption="That day we danced">
-              <img data-src="assets/mem4.jpg" loading="lazy" alt="Memory 4" class="lazy-img">
-            </div>
-
-            <!-- NEW: additional photos you can drop into assets/ -->
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem5.jpg" data-caption="Sweet moment 1">
-              <img data-src="assets/mem5.jpg" loading="lazy" alt="Memory 5" class="lazy-img">
-            </div>
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem6.jpg" data-caption="Sweet moment 2">
-              <img data-src="assets/mem6.jpg" loading="lazy" alt="Memory 6" class="lazy-img">
-            </div>
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem7.jpg" data-caption="Sweet moment 3">
-              <img data-src="assets/mem7.jpg" loading="lazy" alt="Memory 7" class="lazy-img">
-            </div>
-          </div>
-        </section>
-
         <div class="actions" style="margin-top:12px">
           <button id="randomQuote" class="cta">Random Quote</button>
         </div>
+
+        <!-- gallery (only your 3 uploaded pictures, no captions) -->
+        <section aria-label="Gallery">
+          <div class="grid" id="gallery">
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM (2).jpeg">
+              <img data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM (2).jpeg" loading="lazy" alt="Memory 1" class="lazy-img">
+            </div>
+
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM (1).jpeg">
+              <img data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM (1).jpeg" loading="lazy" alt="Memory 2" class="lazy-img">
+            </div>
+
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM.jpeg">
+              <img data-src="assets/WhatsApp Image 2025-09-07 at 10.38.31 PM.jpeg" loading="lazy" alt="Memory 3" class="lazy-img">
+            </div>
+          </div>
+        </section>
       </section>
     </main>
 
     <footer><p style="margin:18px 0 0">Made with ❤️ by Mummayiz • <span id="year"></span></p></footer>
   </div>
 
-  <!-- music player (persistent, unchanged) -->
+  <!-- persistent music player (unchanged) -->
   <div class="music-player" role="region" aria-label="Music player">
     🎶
     <select id="songSelect" aria-label="Select song">
@@ -236,9 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if(push) history.pushState({view:name}, '', '#' + name);
         lazyObserver && lazyObserver.takeRecords && lazyObserver.takeRecords();
 
-        // optional: try to prepare quotes-player when entering quotes view
         if(name === 'quotes') {
-          // show helpful hint if audio not yet loaded
           const qStatus = $('#quotesAudioStatus');
           if(qStatus && qStatus.innerText === '') qStatus.innerText = 'Pick a song and click Play';
         }
@@ -273,11 +252,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const found505 = await headExists(sources[505]);
     const foundLover = await headExists(sources.lover);
     if(found505){ audio.src = sources[505]; audioReady = true; $('#audioStatus').innerText = ''; }
-    else if(foundLover){ audio.src = sources.lover; audioReady = true; $('#audioStatus').innerText = ''; }
+    else if(foundLover){ audio.src = sources[lover]; audioReady = true; $('#audioStatus').innerText = ''; }
     else { audioReady = false; $('#audioStatus').innerText = 'No audio found in assets/ (add assets/505.mp3)'; }
   })();
 
-  $('#songSelect')?.addEventListener('change', async ()=>{ /* unchanged */ const v = $('#songSelect').value; const url = sources[v]; if(url && await headExists(url)){ audio.pause(); audio.src = url; try{ await audio.play(); $('#audioStatus').innerText=''; } catch(e){ $('#audioStatus').innerText='Playback blocked until gesture'; } audioReady = true; } else { $('#audioStatus').innerText = 'Selected audio file missing'; } });
+  $('#songSelect')?.addEventListener('change', async ()=>{ const v = $('#songSelect').value; const url = sources[v]; if(url && await headExists(url)){ audio.pause(); audio.src = url; try{ await audio.play(); $('#audioStatus').innerText=''; } catch(e){ $('#audioStatus').innerText='Playback blocked until gesture'; } audioReady = true; } else { $('#audioStatus').innerText = 'Selected audio file missing'; } });
 
   $('#muteBtn')?.addEventListener('click', ()=> {
     audio.muted = !audio.muted;
@@ -391,14 +370,13 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     $('#randomQuote')?.addEventListener('click', ()=> $('#quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
 
-    function openLightbox(type, src, caption){
+    function openLightbox(type, src){
       const overlay = document.createElement('div'); overlay.className='lb-overlay'; overlay.tabIndex = 0;
       const closeBtn = document.createElement('button'); closeBtn.className='lb-close'; closeBtn.innerText='✕'; closeBtn.addEventListener('click', ()=> overlay.remove());
       let media;
-      if(type === 'image'){ media = document.createElement('img'); media.src = src; media.className='lb-media'; media.alt = caption || 'Photo'; }
+      if(type === 'image'){ media = document.createElement('img'); media.src = src; media.className='lb-media'; media.alt = 'Photo'; }
       else { media = document.createElement('video'); media.src = src; media.className='lb-media'; media.controls = true; media.autoplay = true; media.playsInline = true; }
       overlay.appendChild(closeBtn); overlay.appendChild(media);
-      if(caption){ const cap = document.createElement('div'); cap.style.color='#fff'; cap.style.marginTop='12px'; cap.style.textAlign='center'; cap.innerText = caption; overlay.appendChild(cap); }
       overlay.addEventListener('click', (e)=> { if(e.target === overlay) overlay.remove(); });
       document.body.appendChild(overlay);
       function onKey(e){ if(e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); } }
@@ -409,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(gallery) gallery.addEventListener('click', (e)=> {
       const card = e.target.closest('.card-media');
       if(!card) return;
-      openLightbox(card.dataset.type, card.dataset.src, card.dataset.caption || '');
+      openLightbox(card.dataset.type, card.dataset.src);
     });
     document.querySelectorAll('.card-media').forEach(el=> el.addEventListener('keydown', (e)=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); el.click(); }}));
   })();
