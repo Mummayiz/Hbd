@@ -132,7 +132,7 @@
       <!-- QUOTES VIEW -->
       <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
         <h2 class="lead">Romantic Quotes</h2>
-        <div class="quote" id="quoteBox">"MERE JAAN"</div>
+        <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
 
         <section aria-label="Gallery">
           <div class="grid" id="gallery">
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
      Typewriter (runs once)
   ------------------------*/
   let _typeStarted = false;
-  const letterText = `Happy Birthday Mere jaan MAdi, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
+  const letterText = `Happy Birthday, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
   const twEl = $('#typewriter');
   function startTypewriter(speed = 36){
     if(_typeStarted || !twEl) return;
@@ -464,12 +464,12 @@ document.addEventListener('DOMContentLoaded', function () {
   ------------------------*/
   (function(){
     const quotes = [
-      "I love you not only for what you are, but for what I am when I am with you. ",
-      "You are my today and all of my tomorrows. ",
+      "I love you not only for what you are, but for what I am when I am with you. — Roy Croft",
+      "You are my today and all of my tomorrows. — Leo Christopher",
       "I look at you and see the rest of my life in front of my eyes.",
-      "You are every reason, every hope, and every dream I've ever had. ",
-      "My heart is perfect because you are inside. ",
-      "Where there is love there is life. "
+      "You are every reason, every hope, and every dream I've ever had. — Nicholas Sparks",
+      "My heart is perfect because you are inside. — Unknown",
+      "Where there is love there is life. — Mahatma Gandhi"
     ];
     $('#randomQuote')?.addEventListener('click', ()=> $('#quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
   })();
