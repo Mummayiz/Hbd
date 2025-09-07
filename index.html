@@ -17,8 +17,6 @@
     }
     a{color:var(--rose);text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-    /* nav */
     header.site-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
     header.site-nav .brand{font-family:"Dancing Script";font-size:20px;color:#a33c60}
     header.site-nav nav{display:flex;gap:12px;align-items:center}
@@ -26,7 +24,6 @@
     .nav-link.active{background:linear-gradient(135deg,var(--rose),var(--lav));color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12)}
     .cta{padding:8px 14px;border-radius:40px;background:linear-gradient(135deg,var(--rose),var(--lav));color:#fff;border:none;cursor:pointer;font-weight:700}
 
-    /* hero / letter */
     .hero{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;padding:24px 24px 80px;background:linear-gradient(135deg,#fff7fb,#ffe2f0,#f8d7ff);border-bottom:1px solid rgba(160,100,120,.04)}
     .hero h1{font-family:"Dancing Script",cursive;font-size:clamp(40px,7vw,72px);margin:0 0 8px;color:#a33c60;text-shadow:0 2px 0 #fff8}
     .subtitle{font-size:18px;color:#5a485a;margin:0}
@@ -35,7 +32,6 @@
     .card{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:26px;backdrop-filter:blur(6px);max-width:900px;margin:18px auto}
     .typewriter{min-height:140px;white-space:pre-wrap;line-height:1.7;font-size:18px;border-left:3px solid var(--rose);padding-left:14px;color:#4b3f4e}
 
-    /* compliments hearts */
     .compliments{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:14px;justify-items:center}
     .floating-heart{width:56px;height:56px;position:relative;cursor:pointer;background: radial-gradient(circle at 30% 30%, #ff7aa2, #ff4f88);border-radius:50% 50% 0 0;transform:rotate(-45deg);margin:6px;animation:float 6s infinite;box-shadow:0 6px 12px rgba(0,0,0,.22);border:none}
     .floating-heart:before,.floating-heart:after{content:"";position:absolute;width:56px;height:56px;background:radial-gradient(circle at 30% 30%, #ff7aa2, #ff4f88);border-radius:50%}
@@ -43,17 +39,14 @@
     @keyframes float{0%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-12px)}100%{transform:rotate(-45deg) translateY(0)}}
     .compliment-box{margin-top:10px;font-size:20px;font-weight:700;text-align:center;color:#a33c60;min-height:44px}
 
-    /* fireworks */
     .starry{position:relative;border-radius:12px;overflow:hidden;height:420px;background:radial-gradient(circle at bottom, #6a5a9b, #312a59);margin:22px 0}
     canvas#fireworks{position:absolute;inset:0;display:block}
     .starry .overlay{position:relative;z-index:2;padding:48px 24px;text-align:center;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 
-    /* music */
     .music-player{position:fixed;bottom:18px;right:18px;background:#fff;border-radius:50px;box-shadow:0 8px 20px rgba(0,0,0,.12);padding:8px 14px;display:flex;align-items:center;gap:10px;z-index:999;font-size:14px;font-weight:600;color:#a33c60}
     .music-player select{border:none;background:transparent;font-weight:600;color:#a33c60;cursor:pointer}
     .music-player button{border:none;background:transparent;cursor:pointer;font-size:18px}
 
-    /* quotes / gallery */
     .lead{font-family:'Dancing Script';font-size:32px;color:#a33c60;margin:8px 0}
     .quote{background:#fff;padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.06);font-size:18px;margin-bottom:16px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
@@ -61,7 +54,6 @@
     .card-media img, .card-media video{width:100%;height:160px;object-fit:cover;display:block;border-radius:8px}
     .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
 
-    /* lightbox */
     .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:9999;padding:18px}
     .lb-media{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
     .lb-close{position:fixed;top:16px;right:16px;color:#fff;font-size:26px;z-index:10000;cursor:pointer;background:transparent;border:none}
@@ -81,9 +73,7 @@
       </nav>
     </header>
 
-    <!-- SPA Views -->
     <main id="app">
-      <!-- HOME / CELEBRATION VIEW -->
       <section id="view-home" class="view" aria-hidden="false">
         <section class="hero" role="banner">
           <div class="confetti" id="confetti" aria-hidden="true"></div>
@@ -122,14 +112,12 @@
         </section>
       </section>
 
-      <!-- QUOTES VIEW -->
       <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
         <h2 class="lead">Romantic Quotes</h2>
         <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
 
         <section aria-label="Gallery">
           <div class="grid" id="gallery">
-            <!-- Images: use data-src for lazy load; add loading="lazy" for supportive browsers -->
             <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem1.jpg" data-caption="That smile">
               <img data-src="assets/mem1.jpg" loading="lazy" alt="Memory 1" class="lazy-img">
             </div>
@@ -137,7 +125,6 @@
               <img data-src="assets/mem2.jpg" loading="lazy" alt="Memory 2" class="lazy-img">
             </div>
 
-            <!-- Videos: will lazy-load src when visible; show muted poster frame until opened -->
             <div class="card-media" role="button" tabindex="0" data-type="video" data-src="assets/clip1.mp4" data-caption="A little moment">
               <video data-src="assets/clip1.mp4" poster="" muted playsinline class="lazy-video"></video>
             </div>
@@ -165,9 +152,6 @@
     </footer>
   </div>
 
-  <!-- Lightbox (dynamically created) -->
-
-  <!-- Music Player (persistent) -->
   <div class="music-player" role="region" aria-label="Music player">
     🎶
     <select id="songSelect" aria-label="Select song">
@@ -178,307 +162,306 @@
   </div>
 
 <script>
-/* -----------------------
-   SPA + Navigation
-   ----------------------- */
-(function(){
-  const navLinks = document.querySelectorAll('.nav-link');
-  const views = { home: document.getElementById('view-home'), quotes: document.getElementById('view-quotes')};
-  function showView(name, push=true){
-    Object.keys(views).forEach(k=>{
-      const el = views[k];
-      if(k===name){ el.style.display='block'; el.setAttribute('aria-hidden','false'); }
-      else { el.style.display='none'; el.setAttribute('aria-hidden','true'); }
-    });
-    navLinks.forEach(btn => btn.classList.toggle('active', btn.dataset.view === name));
-    if(push) history.pushState({view:name}, '', '#' + name);
-    // trigger lazy-check when switching
-    lazyObserver && lazyObserver.takeRecords && lazyObserver.takeRecords();
-  }
-  navLinks.forEach(btn=>{
-    btn.addEventListener('click', ()=> showView(btn.dataset.view));
-  });
-  // restore from URL/hash
-  const initial = location.hash ? location.hash.replace('#','') : 'home';
-  showView(initial, false);
-  window.addEventListener('popstate', (e)=> {
-    const v = (e.state && e.state.view) || (location.hash ? location.hash.replace('#','') : 'home');
-    showView(v, false);
-  });
-})();
+/* Run initialization after DOM is ready and guard against runtime errors */
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    // small helper to safe-query
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-/* -----------------------
-   Persistent Audio (single instance)
-   ----------------------- */
-window._bgAudio = window._bgAudio || new Audio();
-const audio = window._bgAudio;
-audio.loop = true;
-audio.preload = 'auto';
-const sources = {505:'assets/505.mp3', lover:'assets/lover.mp3'};
-audio.src = audio.src || sources['505'];
-
-// music UI
-const songSelect = document.getElementById('songSelect');
-songSelect.addEventListener('change', ()=>{
-  const v = songSelect.value;
-  audio.pause();
-  audio.src = sources[v] || v;
-  audio.play().catch(()=>{/* autoplay blocked until gesture */});
-});
-const muteBtn = document.getElementById('muteBtn');
-muteBtn.addEventListener('click', ()=>{
-  audio.muted = !audio.muted;
-  muteBtn.innerText = audio.muted ? '🔇':'🔊';
-  muteBtn.setAttribute('aria-pressed', String(audio.muted));
-});
-
-// top "Begin" button gestures
-document.getElementById('enterBtn').addEventListener('click', ()=> { audio.play().catch(()=>{}); });
-document.getElementById('enterBtn2').addEventListener('click', ()=>{
-  // start the typewriter if not started
-  if (!typewriterStarted) startTypewriter();
-  audio.play().catch(()=>{});
-  // confetti/popups
-  for(let i=0;i<18;i++){ setTimeout(()=> showPopup(Math.random()*window.innerWidth, Math.random()*window.innerHeight), i*110); }
-});
-
-/* -----------------------
-   Typewriter
-   ----------------------- */
-const letterText = `Happy Birthday, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
-let tpos = 0, typewriterStarted = false;
-const twEl = document.getElementById('typewriter');
-function startTypewriter(speed = 36){
-  typewriterStarted = true;
-  (function step(){
-    if(tpos < letterText.length){ twEl.innerHTML += letterText.charAt(tpos); tpos++;
-      const ch = letterText.charAt(tpos);
-      const delay = (ch === '\n') ? 30 : (/[.,—?!]/.test(ch) ? speed + 90 : speed);
-      setTimeout(step, delay);
-    }
-  })();
-}
-
-/* -----------------------
-   Compliment hearts
-   ----------------------- */
-const compliments = [
-  'You make me laugh 💕','You’re my safe place 🤗','Your smile melts my heart 😍','You brighten my darkest days 🌞',
-  'You’re my best friend 🥰','You are so thoughtful 🌸','You inspire me ✨','You are my sunshine ☀️','You believe in me 🌟',
-  'You’re my favorite hello 💖','You’re my forever 💍','You’re my lucky charm 🍀','Your kindness amazes me 🌷','You’re so beautiful 💃',
-  'You complete me 💞','You understand me 🎶','You make life magical 🦋','You make me proud 💪','You are my dream come true 🌈',
-  'I love you endlessly ❤️','You’re the melody to my heart 🎵','You make every day special 🌹','You’re the reason I believe in love 💘','You’re my sweetest destiny 💎'
-];
-const heartsContainer = document.getElementById('heartsContainer');
-const complimentBox = document.getElementById('complimentBox');
-compliments.forEach(c=>{
-  const b = document.createElement('button');
-  b.className = 'floating-heart';
-  b.setAttribute('aria-label', c);
-  b.addEventListener('click', (e)=> { complimentBox.innerText = c; showPopup(e.clientX, e.clientY); });
-  b.addEventListener('keydown', (e)=> { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); b.click(); }});
-  heartsContainer.appendChild(b);
-});
-
-/* popup */
-function showPopup(x,y){
-  const popup = document.createElement('div');
-  popup.className='popup';
-  popup.style.position='fixed';
-  popup.style.left = Math.min(Math.max(x-16,8), window.innerWidth-60)+'px';
-  popup.style.top = Math.min(Math.max(y-24,8), window.innerHeight-60)+'px';
-  popup.style.zIndex = 9999;
-  popup.style.fontSize = '26px';
-  popup.style.pointerEvents = 'none';
-  popup.innerText = ['✨','💕','🌸','💖','🌹','🌟'][Math.floor(Math.random()*6)];
-  document.body.appendChild(popup);
-  popup.animate([{opacity:1, transform:'translateY(0) scale(1)'},{opacity:0, transform:'translateY(-60px) scale(1.3)'}], {duration:1400, easing:'ease-out'});
-  setTimeout(()=> popup.remove(),1500);
-}
-
-/* -----------------------
-   Fireworks canvas
-   ----------------------- */
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-let particles = [];
-function fitCanvasToContainer(){
-  const container = canvas.parentElement;
-  canvas.style.width = '100%';
-  const ratio = window.devicePixelRatio || 1;
-  const w = container.clientWidth;
-  const h = container.clientHeight || 400;
-  canvas.width = Math.floor(w * ratio);
-  canvas.height = Math.floor(h * ratio);
-  canvas.style.height = h + 'px';
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-}
-window.addEventListener('resize', fitCanvasToContainer);
-fitCanvasToContainer();
-
-function Firework(x,y,color){
-  this.x=x; this.y=y; this.color=color; this.radius=Math.random()*2+1.5; this.alpha=1;
-  const speed=Math.random()*4+1.5; const angle=Math.random()*Math.PI*2;
-  this.dx=Math.cos(angle)*speed; this.dy=Math.sin(angle)*speed; this.gravity=0.03+Math.random()*0.04;
-}
-Firework.prototype.update = function(){ this.dx*=0.99; this.dy += this.gravity; this.x += this.dx; this.y += this.dy; this.alpha -= 0.012 + Math.random()*0.006; };
-Firework.prototype.draw = function(){ ctx.save(); ctx.globalAlpha = Math.max(this.alpha,0); ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2); ctx.fillStyle=this.color; ctx.fill(); ctx.restore(); };
-
-function boom(x=null,y=null){
-  const rect = canvas.getBoundingClientRect();
-  const cx = x ?? rect.width/2;
-  const cy = y ?? rect.height/2;
-  const colors = ['#ffadc6','#ff7aa2','#c7b5ff','#f4d7a1','#ffd6e8','#ffd3a8'];
-  for(let i=0;i<80;i++) particles.push(new Firework(cx + (Math.random()-0.5)*80, cy + (Math.random()-0.5)*80, colors[i % colors.length]));
-}
-function animateFW(){
-  requestAnimationFrame(animateFW);
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  for(let i = particles.length-1; i >= 0; i--){
-    const p = particles[i];
-    p.update();
-    p.draw();
-    if(p.alpha <= 0 || p.y > canvas.height + 60) particles.splice(i,1);
-  }
-}
-animateFW();
-
-document.getElementById('boom').addEventListener('click', ()=> {
-  boom();
-  setTimeout(()=>{ showCelebrationText(); }, 800);
-});
-function showCelebrationText(){
-  ctx.save();
-  ctx.font = '48px "Dancing Script", cursive';
-  ctx.fillStyle = '#fff';
-  ctx.textAlign = 'center';
-  const ratio = window.devicePixelRatio || 1;
-  ctx.fillText('Happy Birthday Madiha 💖', canvas.width/2/ratio, canvas.height/2/ratio);
-  ctx.restore();
-}
-
-/* auto-fireworks on bottom scroll (one-time) */
-let scrolledTriggered = false;
-window.addEventListener('scroll', ()=>{
-  if(!scrolledTriggered && (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2)){
-    scrolledTriggered = true;
-    boom();
-  }
-});
-
-/* -----------------------
-   Quotes & Lightbox
-   ----------------------- */
-const quotes = [
-  "I love you not only for what you are, but for what I am when I am with you. — Roy Croft",
-  "You are my today and all of my tomorrows. — Leo Christopher",
-  "I look at you and see the rest of my life in front of my eyes.",
-  "You are every reason, every hope, and every dream I've ever had. — Nicholas Sparks",
-  "My heart is perfect because you are inside. — Unknown",
-  "Where there is love there is life. — Mahatma Gandhi"
-];
-document.getElementById('randomQuote').addEventListener('click', ()=> {
-  document.getElementById('quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)];
-});
-
-/* Lightbox open/close */
-function openLightbox(type, src, caption){
-  const overlay = document.createElement('div'); overlay.className='lb-overlay';
-  overlay.tabIndex = 0;
-  const closeBtn = document.createElement('button'); closeBtn.className='lb-close'; closeBtn.innerText='✕';
-  closeBtn.addEventListener('click', ()=> overlay.remove());
-  let media;
-  if(type === 'image'){
-    media = document.createElement('img'); media.src = src; media.className='lb-media'; media.alt = caption || 'Photo';
-  } else {
-    media = document.createElement('video'); media.src = src; media.className='lb-media'; media.controls = true; media.autoplay = true; media.playsInline = true;
-  }
-  overlay.appendChild(closeBtn); overlay.appendChild(media);
-  if(caption){ const cap = document.createElement('div'); cap.style.color='#fff'; cap.style.marginTop='12px'; cap.style.textAlign='center'; cap.innerText = caption; overlay.appendChild(cap); }
-  overlay.addEventListener('click', (e)=> { if(e.target === overlay) overlay.remove(); });
-  document.body.appendChild(overlay);
-  function onKey(e){ if(e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); } }
-  document.addEventListener('keydown', onKey);
-}
-
-/* Gallery click handler (delegation) */
-document.getElementById('gallery').addEventListener('click', (e)=>{
-  const card = e.target.closest('.card-media');
-  if(!card) return;
-  const type = card.dataset.type;
-  const src = card.dataset.src;
-  const caption = card.dataset.caption || '';
-  openLightbox(type, src, caption);
-});
-/* keyboard activation */
-document.querySelectorAll('.card-media').forEach(el=>{
-  el.addEventListener('keydown', (e)=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); el.click(); }});
-});
-
-/* -----------------------
-   Lazy-loading (images + videos) via IntersectionObserver
-   - images use data-src on <img>
-   - videos use data-src on <video> and we set the src when in view
-   ----------------------- */
-const lazyImgs = document.querySelectorAll('.lazy-img');
-const lazyVideos = document.querySelectorAll('.lazy-video');
-
-const lazyObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries, obs) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      const el = entry.target;
-      if(el.tagName.toLowerCase() === 'img'){
-        const src = el.getAttribute('data-src');
-        if(src){ el.src = src; el.removeAttribute('data-src'); }
-        obs.unobserve(el);
-      } else if(el.tagName.toLowerCase() === 'video'){
-        const src = el.getAttribute('data-src');
-        if(src){
-          // set a small poster if not present (we leave poster empty if not provided)
-          el.src = src;
-          // we intentionally do not autoplay heavy video thumbnails; keep muted and paused
-          el.load();
-          el.removeAttribute('data-src');
-        }
-        obs.unobserve(el);
+    /* -----------------------
+       SPA navigation
+    ----------------------- */
+    try {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const views = { home: document.getElementById('view-home'), quotes: document.getElementById('view-quotes')};
+      function showView(name, push=true){
+        Object.keys(views).forEach(k=>{
+          const el = views[k];
+          if(!el) return;
+          if(k===name){ el.style.display='block'; el.setAttribute('aria-hidden','false'); }
+          else { el.style.display='none'; el.setAttribute('aria-hidden','true'); }
+        });
+        navLinks.forEach(btn => btn.classList.toggle('active', btn.dataset.view === name));
+        if(push) history.pushState({view:name}, '', '#' + name);
+        lazyObserver && lazyObserver.takeRecords && lazyObserver.takeRecords();
       }
-    }
-  });
-}, {rootMargin: '200px 0px 200px 0px', threshold: 0.01}) : null;
+      navLinks.forEach(btn=> btn.addEventListener('click', ()=> showView(btn.dataset.view)));
+      const initial = location.hash ? location.hash.replace('#','') : 'home';
+      showView(initial, false);
+      window.addEventListener('popstate', (e)=> {
+        const v = (e.state && e.state.view) || (location.hash ? location.hash.replace('#','') : 'home');
+        showView(v, false);
+      });
+    } catch(e){ console.warn('SPA nav failure', e); }
 
-lazyImgs.forEach(img => {
-  // browsers that support native lazy loading will already delay; but IntersectionObserver ensures src set from data-src
-  if(img.getAttribute('data-src')) {
-    img.src = img.getAttribute('data-src'); // set initial for fallback browsers (keeps quick)
-    img.removeAttribute('data-src');
+    /* -----------------------
+       Persistent Audio
+    ----------------------- */
+    try {
+      window._bgAudio = window._bgAudio || new Audio();
+      const audio = window._bgAudio;
+      audio.loop = true;
+      audio.preload = 'auto';
+      const sources = {505:'assets/505.mp3', lover:'assets/lover.mp3'};
+      if(!audio.src) audio.src = sources['505'];
+
+      const songSelect = document.getElementById('songSelect');
+      if(songSelect){
+        songSelect.addEventListener('change', ()=>{
+          const v = songSelect.value;
+          try { audio.pause(); audio.src = sources[v] || v; audio.play().catch(()=>{}); } catch(err){ console.warn('audio change err', err); }
+        });
+      }
+      const muteBtn = document.getElementById('muteBtn');
+      if(muteBtn){
+        muteBtn.addEventListener('click', ()=>{
+          audio.muted = !audio.muted;
+          muteBtn.innerText = audio.muted ? '🔇':'🔊';
+          muteBtn.setAttribute('aria-pressed', String(audio.muted));
+        });
+      }
+      // begin gestures
+      const enterBtn = document.getElementById('enterBtn');
+      if(enterBtn) enterBtn.addEventListener('click', ()=> { audio.play().catch(()=>{}); });
+    } catch(e){ console.warn('Audio init failure', e); }
+
+    /* -----------------------
+       Typewriter
+    ----------------------- */
+    try {
+      const letterText = `Happy Birthday, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
+      let tpos = 0, typewriterStarted = false;
+      const twEl = document.getElementById('typewriter');
+      function startTypewriter(speed = 36){
+        if(!twEl) return;
+        typewriterStarted = true;
+        (function step(){
+          if(tpos < letterText.length){ twEl.innerHTML += letterText.charAt(tpos); tpos++;
+            const ch = letterText.charAt(tpos);
+            const delay = (ch === '\n') ? 30 : (/[.,—?!]/.test(ch) ? speed + 90 : speed);
+            setTimeout(step, delay);
+          }
+        })();
+      }
+      // wire start button
+      const enterBtn2 = document.getElementById('enterBtn2');
+      if(enterBtn2){
+        enterBtn2.addEventListener('click', ()=>{
+          if(!typewriterStarted) startTypewriter();
+          try { window._bgAudio && window._bgAudio.play().catch(()=>{}); } catch(e){}
+          for(let i=0;i<18;i++){ setTimeout(()=> showPopup(Math.random()*window.innerWidth, Math.random()*window.innerHeight), i*110); }
+        });
+      }
+    } catch(e){ console.warn('Typewriter failure', e); }
+
+    /* -----------------------
+       Compliment hearts + popup
+    ----------------------- */
+    try {
+      const compliments = [
+        'You make me laugh 💕','You’re my safe place 🤗','Your smile melts my heart 😍','You brighten my darkest days 🌞',
+        'You’re my best friend 🥰','You are so thoughtful 🌸','You inspire me ✨','You are my sunshine ☀️','You believe in me 🌟',
+        'You’re my favorite hello 💖','You’re my forever 💍','You’re my lucky charm 🍀','Your kindness amazes me 🌷','You’re so beautiful 💃',
+        'You complete me 💞','You understand me 🎶','You make life magical 🦋','You make me proud 💪','You are my dream come true 🌈',
+        'I love you endlessly ❤️','You’re the melody to my heart 🎵','You make every day special 🌹','You’re the reason I believe in love 💘','You’re my sweetest destiny 💎'
+      ];
+      const heartsContainer = document.getElementById('heartsContainer');
+      const complimentBox = document.getElementById('complimentBox');
+      if(heartsContainer && complimentBox){
+        compliments.forEach(c=>{
+          const b = document.createElement('button');
+          b.className = 'floating-heart';
+          b.setAttribute('aria-label', c);
+          b.addEventListener('click', (e)=> { complimentBox.innerText = c; showPopup(e.clientX, e.clientY); });
+          b.addEventListener('keydown', (e)=> { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); b.click(); }});
+          heartsContainer.appendChild(b);
+        });
+      }
+      function showPopup(x,y){
+        const popup = document.createElement('div');
+        popup.className='popup';
+        popup.style.position='fixed';
+        popup.style.left = Math.min(Math.max(x-16,8), window.innerWidth-60)+'px';
+        popup.style.top = Math.min(Math.max(y-24,8), window.innerHeight-60)+'px';
+        popup.style.zIndex = 9999;
+        popup.style.fontSize = '26px';
+        popup.style.pointerEvents = 'none';
+        popup.innerText = ['✨','💕','🌸','💖','🌹','🌟'][Math.floor(Math.random()*6)];
+        document.body.appendChild(popup);
+        popup.animate([{opacity:1, transform:'translateY(0) scale(1)'},{opacity:0, transform:'translateY(-60px) scale(1.3)'}], {duration:1400, easing:'ease-out'});
+        setTimeout(()=> popup.remove(),1500);
+      }
+    } catch(e){ console.warn('Compliments init failure', e); }
+
+    /* -----------------------
+       Fireworks
+    ----------------------- */
+    try {
+      const canvas = document.getElementById('fireworks');
+      if(canvas){
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function fitCanvasToContainer(){
+          const container = canvas.parentElement;
+          canvas.style.width = '100%';
+          const ratio = window.devicePixelRatio || 1;
+          const w = container.clientWidth;
+          const h = container.clientHeight || 400;
+          canvas.width = Math.floor(w * ratio);
+          canvas.height = Math.floor(h * ratio);
+          canvas.style.height = h + 'px';
+          ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        }
+        window.addEventListener('resize', fitCanvasToContainer);
+        fitCanvasToContainer();
+
+        function Firework(x,y,color){
+          this.x=x; this.y=y; this.color=color; this.radius=Math.random()*2+1.5; this.alpha=1;
+          const speed=Math.random()*4+1.5; const angle=Math.random()*Math.PI*2;
+          this.dx=Math.cos(angle)*speed; this.dy=Math.sin(angle)*speed; this.gravity=0.03+Math.random()*0.04;
+        }
+        Firework.prototype.update = function(){ this.dx*=0.99; this.dy += this.gravity; this.x += this.dx; this.y += this.dy; this.alpha -= 0.012 + Math.random()*0.006; };
+        Firework.prototype.draw = function(){ ctx.save(); ctx.globalAlpha = Math.max(this.alpha,0); ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2); ctx.fillStyle=this.color; ctx.fill(); ctx.restore(); };
+
+        function boom(x=null,y=null){
+          const rect = canvas.getBoundingClientRect();
+          const cx = x ?? rect.width/2;
+          const cy = y ?? rect.height/2;
+          const colors = ['#ffadc6','#ff7aa2','#c7b5ff','#f4d7a1','#ffd6e8','#ffd3a8'];
+          for(let i=0;i<80;i++) particles.push(new Firework(cx + (Math.random()-0.5)*80, cy + (Math.random()-0.5)*80, colors[i % colors.length]));
+        }
+        function animateFW(){
+          requestAnimationFrame(animateFW);
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          for(let i = particles.length-1; i >= 0; i--){
+            const p = particles[i];
+            p.update();
+            p.draw();
+            if(p.alpha <= 0 || p.y > canvas.height + 60) particles.splice(i,1);
+          }
+        }
+        animateFW();
+
+        const boomBtn = document.getElementById('boom');
+        if(boomBtn) boomBtn.addEventListener('click', ()=> { boom(); setTimeout(()=>{ showCelebrationText(); }, 800); });
+        function showCelebrationText(){
+          ctx.save();
+          ctx.font = '48px "Dancing Script", cursive';
+          ctx.fillStyle = '#fff';
+          ctx.textAlign = 'center';
+          const ratio = window.devicePixelRatio || 1;
+          ctx.fillText('Happy Birthday Madiha 💖', canvas.width/2/ratio, canvas.height/2/ratio);
+          ctx.restore();
+        }
+      }
+    } catch(e){ console.warn('Fireworks failure', e); }
+
+    /* -----------------------
+       Quotes & Lightbox
+    ----------------------- */
+    try {
+      const quotes = [
+        "I love you not only for what you are, but for what I am when I am with you. — Roy Croft",
+        "You are my today and all of my tomorrows. — Leo Christopher",
+        "I look at you and see the rest of my life in front of my eyes.",
+        "You are every reason, every hope, and every dream I've ever had. — Nicholas Sparks",
+        "My heart is perfect because you are inside. — Unknown",
+        "Where there is love there is life. — Mahatma Gandhi"
+      ];
+      const randomQuoteBtn = document.getElementById('randomQuote');
+      if(randomQuoteBtn){
+        randomQuoteBtn.addEventListener('click', ()=> document.getElementById('quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
+      }
+
+      function openLightbox(type, src, caption){
+        const overlay = document.createElement('div'); overlay.className='lb-overlay';
+        overlay.tabIndex = 0;
+        const closeBtn = document.createElement('button'); closeBtn.className='lb-close'; closeBtn.innerText='✕';
+        closeBtn.addEventListener('click', ()=> overlay.remove());
+        let media;
+        if(type === 'image'){ media = document.createElement('img'); media.src = src; media.className='lb-media'; media.alt = caption || 'Photo'; }
+        else { media = document.createElement('video'); media.src = src; media.className='lb-media'; media.controls = true; media.autoplay = true; media.playsInline = true; }
+        overlay.appendChild(closeBtn); overlay.appendChild(media);
+        if(caption){ const cap = document.createElement('div'); cap.style.color='#fff'; cap.style.marginTop='12px'; cap.style.textAlign='center'; cap.innerText = caption; overlay.appendChild(cap); }
+        overlay.addEventListener('click', (e)=> { if(e.target === overlay) overlay.remove(); });
+        document.body.appendChild(overlay);
+        function onKey(e){ if(e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); } }
+        document.addEventListener('keydown', onKey);
+      }
+
+      const gallery = document.getElementById('gallery');
+      if(gallery){
+        gallery.addEventListener('click', (e)=>{
+          const card = e.target.closest('.card-media');
+          if(!card) return;
+          const type = card.dataset.type;
+          const src = card.dataset.src;
+          const caption = card.dataset.caption || '';
+          openLightbox(type, src, caption);
+        });
+        // keyboard activation
+        document.querySelectorAll('.card-media').forEach(el=>{
+          el.addEventListener('keydown', (e)=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); el.click(); }});
+        });
+      }
+    } catch(e){ console.warn('Quotes/lightbox failure', e); }
+
+    /* -----------------------
+       Lazy-loading (images + videos)
+    ----------------------- */
+    try {
+      const lazyImgs = document.querySelectorAll('.lazy-img');
+      const lazyVideos = document.querySelectorAll('.lazy-video');
+
+      const lazyObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            const el = entry.target;
+            try {
+              if(el.tagName.toLowerCase() === 'img'){
+                const src = el.getAttribute('data-src');
+                if(src){ el.src = src; el.removeAttribute('data-src'); }
+                obs.unobserve(el);
+              } else if(el.tagName.toLowerCase() === 'video'){
+                const src = el.getAttribute('data-src');
+                if(src){ el.src = src; el.load(); el.removeAttribute('data-src'); }
+                obs.unobserve(el);
+              }
+            } catch(err){ console.warn('lazy load err', err); }
+          }
+        });
+      }, {rootMargin: '200px 0px 200px 0px', threshold: 0.01}) : null;
+
+      lazyImgs.forEach(img => {
+        if(img.getAttribute('data-src')) {
+          // leave native loading=lazy alone but ensure data-src is used
+          // do not eagerly set src here so browsers with native lazy still benefit
+        }
+        if(lazyObserver) lazyObserver.observe(img);
+      });
+      lazyVideos.forEach(v=>{
+        if(lazyObserver) lazyObserver.observe(v);
+        else {
+          const src = v.getAttribute('data-src');
+          if(src){ v.src = src; v.removeAttribute('data-src'); }
+        }
+      });
+    } catch(e){ console.warn('Lazy load init failure', e); }
+
+    /* -----------------------
+       small polish
+    ----------------------- */
+    try {
+      document.getElementById('year').innerText = new Date().getFullYear();
+      setTimeout(()=> { const box = document.getElementById('complimentBox'); if(box && box.innerText.trim()==='Click a heart 💖') box.innerText = 'You’re my favorite hello 💖'; }, 3200);
+      console.log('SPA ready (robust build).');
+    } catch(e){ console.warn('final polish failed', e); }
+
+  } catch (err) {
+    console.error('Fatal init error', err);
   }
-  if(lazyObserver) lazyObserver.observe(img);
 });
-lazyVideos.forEach(v=>{
-  if(lazyObserver) lazyObserver.observe(v);
-  else {
-    const src = v.getAttribute('data-src');
-    if(src){ v.src = src; v.removeAttribute('data-src'); }
-  }
-});
-
-/* -----------------------
-   Small polish & accessibility
-   ----------------------- */
-document.getElementById('year').innerText = new Date().getFullYear();
-// set initial compliment message after a short delay
-setTimeout(()=> { if(complimentBox.innerText.trim()==='Click a heart 💖') complimentBox.innerText = 'You’re my favorite hello 💖'; }, 3200);
-
-/* helpful console note */
-console.log('SPA ready. To host: upload this directory (index.html + assets/) to any static host.');
-
-/* -----------------------
-   Hosting-ready tips printed to console
-   ----------------------- */
-console.log('Hosting tips: Serve this folder as static files. Examples:');
-console.log(' - Local test: python -m http.server 8000');
-console.log(' - GitHub Pages: push to repo branch gh-pages or use repo settings');
-console.log(' - Netlify/Vercel: drag & drop folder or link repo; assets/ must be published with index.html');
 </script>
 </body>
 </html>
