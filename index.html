@@ -61,6 +61,11 @@
     .card-media img, .card-media video{width:100%;height:160px;object-fit:cover;display:block;border-radius:8px}
     .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
 
+    /* quotes-player small UI */
+    .quotes-player { display:flex; gap:10px; align-items:center; justify-content:flex-start; background:#fff; padding:12px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.06); margin-bottom:12px; }
+    .quotes-player select{border:none;background:transparent;font-weight:600;color:#a33c60;cursor:pointer}
+    .quotes-player button{border:none;background:linear-gradient(135deg,var(--rose),var(--lav));color:#fff;padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:700}
+
     /* lightbox */
     .lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:9999;padding:18px}
     .lb-media{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
@@ -86,7 +91,7 @@
     </header>
 
     <main id="app">
-      <!-- HOME / CELEBRATION VIEW -->
+      <!-- HOME / CELEBRATION VIEW (unchanged) -->
       <section id="view-home" class="view" aria-hidden="false">
         <section class="hero" role="banner">
           <div class="confetti" id="confetti" aria-hidden="true"></div>
@@ -128,9 +133,22 @@
         </section>
       </section>
 
-      <!-- QUOTES / GALLERY VIEW -->
+      <!-- QUOTES / GALLERY VIEW (added small player UI + extra images) -->
       <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
         <h2 class="lead">Romantic Quotes</h2>
+
+        <!-- small quotes music player (select + play/pause) -->
+        <div class="quotes-player" role="region" aria-label="Quotes music player">
+          <label for="quotesSongSelect" style="font-weight:700;color:#856b79;margin-right:6px">Play song:</label>
+          <select id="quotesSongSelect" aria-label="Select romantic song">
+            <option value="rom1">Romantic Song 1</option>
+            <option value="rom2">Romantic Song 2</option>
+            <option value="rom3">Romantic Song 3</option>
+          </select>
+          <button id="quotesPlay" aria-pressed="false">Play ▶</button>
+          <span id="quotesAudioStatus" style="margin-left:10px;font-size:13px;color:#856b79"></span>
+        </div>
+
         <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
 
         <section aria-label="Gallery">
@@ -155,6 +173,17 @@
             <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem4.jpg" data-caption="That day we danced">
               <img data-src="assets/mem4.jpg" loading="lazy" alt="Memory 4" class="lazy-img">
             </div>
+
+            <!-- NEW: additional photos you can drop into assets/ -->
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem5.jpg" data-caption="Sweet moment 1">
+              <img data-src="assets/mem5.jpg" loading="lazy" alt="Memory 5" class="lazy-img">
+            </div>
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem6.jpg" data-caption="Sweet moment 2">
+              <img data-src="assets/mem6.jpg" loading="lazy" alt="Memory 6" class="lazy-img">
+            </div>
+            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/mem7.jpg" data-caption="Sweet moment 3">
+              <img data-src="assets/mem7.jpg" loading="lazy" alt="Memory 7" class="lazy-img">
+            </div>
           </div>
         </section>
 
@@ -167,7 +196,7 @@
     <footer><p style="margin:18px 0 0">Made with ❤️ by Mummayiz • <span id="year"></span></p></footer>
   </div>
 
-  <!-- music player -->
+  <!-- music player (persistent, unchanged) -->
   <div class="music-player" role="region" aria-label="Music player">
     🎶
     <select id="songSelect" aria-label="Select song">
@@ -206,6 +235,13 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.forEach(btn => btn.classList.toggle('active', btn.dataset.view === name));
         if(push) history.pushState({view:name}, '', '#' + name);
         lazyObserver && lazyObserver.takeRecords && lazyObserver.takeRecords();
+
+        // optional: try to prepare quotes-player when entering quotes view
+        if(name === 'quotes') {
+          // show helpful hint if audio not yet loaded
+          const qStatus = $('#quotesAudioStatus');
+          if(qStatus && qStatus.innerText === '') qStatus.innerText = 'Pick a song and click Play';
+        }
       }
       navLinks.forEach(btn => btn.addEventListener('click', ()=> showView(btn.dataset.view)));
       showView(location.hash ? location.hash.replace('#','') : 'home', false);
@@ -217,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   /* ============================
-     Persistent audio
+     Persistent audio (unchanged)
      ============================ */
   let audioReady = false;
   window._bgAudio = window._bgAudio || new Audio();
@@ -241,18 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else { audioReady = false; $('#audioStatus').innerText = 'No audio found in assets/ (add assets/505.mp3)'; }
   })();
 
-  $('#songSelect')?.addEventListener('change', async ()=>{
-    const v = $('#songSelect').value;
-    const url = sources[v];
-    if(url && await headExists(url)){
-      audio.pause();
-      audio.src = url;
-      try{ await audio.play(); $('#audioStatus').innerText=''; } catch(e){ $('#audioStatus').innerText='Playback blocked until gesture'; }
-      audioReady = true;
-    } else {
-      $('#audioStatus').innerText = 'Selected audio file missing';
-    }
-  });
+  $('#songSelect')?.addEventListener('change', async ()=>{ /* unchanged */ const v = $('#songSelect').value; const url = sources[v]; if(url && await headExists(url)){ audio.pause(); audio.src = url; try{ await audio.play(); $('#audioStatus').innerText=''; } catch(e){ $('#audioStatus').innerText='Playback blocked until gesture'; } audioReady = true; } else { $('#audioStatus').innerText = 'Selected audio file missing'; } });
 
   $('#muteBtn')?.addEventListener('click', ()=> {
     audio.muted = !audio.muted;
@@ -390,6 +415,77 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   /* ============================
+     Quotes-page audio player
+     ============================ */
+  (function quotesAudioInit(){
+    // mapping - put your mp3 files into assets/
+    const qSources = { rom1: 'assets/rom1.mp3', rom2: 'assets/rom2.mp3', rom3: 'assets/rom3.mp3' };
+    const qAudio = new Audio();
+    qAudio.loop = true;
+    qAudio.preload = 'none';
+    const playBtn = $('#quotesPlay');
+    const select = $('#quotesSongSelect');
+    const status = $('#quotesAudioStatus');
+
+    async function isAvailable(url){
+      try { const res = await fetch(url, { method: 'HEAD' }); return res.ok; } catch(e){ return false; }
+    }
+
+    async function setSource(key){
+      const url = qSources[key];
+      if(!url){ status.innerText = 'No song selected'; return false; }
+      const ok = await isAvailable(url);
+      if(!ok){ status.innerText = 'Audio not found in assets/ (add ' + url + ')'; return false; }
+      qAudio.src = url;
+      status.innerText = '';
+      return true;
+    }
+
+    // Play/pause toggle
+    playBtn?.addEventListener('click', async ()=>{
+      if(qAudio.paused && qAudio.src){
+        try {
+          await qAudio.play();
+          playBtn.innerText = 'Pause ⏸';
+          playBtn.setAttribute('aria-pressed','true');
+          status.innerText = '';
+        } catch(e){
+          status.innerText = 'Playback blocked — tap anywhere or try again';
+        }
+      } else if(qAudio.paused && !qAudio.src) {
+        // first-time load: set source then play
+        const key = select.value;
+        const ok = await setSource(key);
+        if(ok){
+          try { await qAudio.play(); playBtn.innerText = 'Pause ⏸'; playBtn.setAttribute('aria-pressed','true'); status.innerText = ''; } catch(e){ status.innerText = 'Playback blocked — tap to allow'; }
+        }
+      } else {
+        qAudio.pause();
+        playBtn.innerText = 'Play ▶';
+        playBtn.setAttribute('aria-pressed','false');
+      }
+    });
+
+    // change source while playing
+    select?.addEventListener('change', async ()=>{
+      const k = select.value;
+      const ok = await setSource(k);
+      if(ok){
+        // if playing, restart on new source
+        if(!qAudio.paused){
+          try { await qAudio.play(); } catch(e){ /* ignore */ }
+        }
+      }
+    });
+
+    // try to pre-check existence to show hint (non-blocking)
+    (async function preCheck(){
+      const k = select.value;
+      await setSource(k);
+    })();
+  })();
+
+  /* ============================
      Lazy-loading (images + videos)
      ============================ */
   let lazyObserver = null;
@@ -416,6 +512,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }, {rootMargin:'200px 0px 200px 0px', threshold:0.01}) : null;
     lazyImgs.forEach(img => { if(lazyObserver) lazyObserver.observe(img); else if(img.getAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }});
     lazyVideos.forEach(v => { if(lazyObserver) lazyObserver.observe(v); else { const src=v.getAttribute('data-src'); if(src){ v.src=src; v.removeAttribute('data-src'); }}});
+
+    // re-observe newly inserted lazy images when SPA view changes
+    window.addEventListener('hashchange', ()=> {
+      document.querySelectorAll('.lazy-img').forEach(img => { if(lazyObserver) lazyObserver.observe(img); });
+      document.querySelectorAll('.lazy-video').forEach(v => { if(lazyObserver) lazyObserver.observe(v); });
+    });
   })();
 
   /* final polish */
