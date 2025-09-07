@@ -82,7 +82,7 @@
 <body>
   <div class="container">
     <header class="site-nav" role="navigation" aria-label="Main nav">
-      <div class="brand">Madi's Surprise</div>
+      <div class="brand">Madi's Birthday</div>
       <nav>
         <button class="nav-link active" data-view="home">Celebrate</button>
         <button class="nav-link" data-view="quotes">Romantic Quotes</button>
@@ -143,14 +143,13 @@
     <select id="quotesSongSelect" aria-label="Select romantic song">
       <option value="rom1">Romantic Song 1</option>
       <option value="rom2">Romantic Song 2</option>
-      <option value="rom3">Romantic Song 3</option>
     </select>
     <button id="quotesPlay" aria-pressed="false">Play ▶</button>
     <span id="quotesAudioStatus" style="margin-left:10px;font-size:13px;color:#856b79"></span>
   </div>
 
   <!-- quote box -->
-  <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
+  <div class="quote" id="quoteBox">"Happy Birthday Mere Jaan." </div>
   <div class="actions" style="margin-top:12px">
     <button id="randomQuote" class="cta">Random Quote</button>
   </div>
@@ -293,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
      Typewriter (only once)
      ============================ */
   (function typewriterInit(){
-    const letterText = `Happy Birthday, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
+    const letterText = `Happy Birthday MJ, my sweetest love.\n\nThank you for being my safe place, my happiest adventure, and my favorite hello. I love your smile, your kindness, and the way you light up even the quietest days.\n\nI am proud of you—of everything you are and all that you are becoming. I’m always on your side. Today is all for you.\n\nLet’s keep collecting tiny moments, inside jokes, and big dreams… together.\n\nForever yours,\nMummayiz ❤️`;
     let tpos=0, started=false; const tw = $('#typewriter');
     function startTypewriter(speed = 36){
       if(!tw || started) return;
@@ -316,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
      Compliments hearts
      ============================ */
   (function complimentsInit(){
-    const compliments = ['You make me laugh 💕','You’re my safe place 🤗','Your smile melts my heart 😍','You brighten my darkest days 🌞','You’re my best friend 🥰','You are so thoughtful 🌸','You inspire me ✨','You are my sunshine ☀️','You believe in me 🌟','You’re my favorite hello 💖','You’re my forever 💍','You’re my lucky charm 🍀','Your kindness amazes me 🌷','You’re so beautiful 💃','You complete me 💞','You understand me 🎶','You make life magical 🦋','You make me proud 💪','You are my dream come true 🌈','I love you endlessly ❤️','You’re the melody to my heart 🎵','You make every day special 🌹','You’re the reason I believe in love 💘','You’re my sweetest destiny 💎'];
+    const compliments = ['You make me laugh 💕','You’re my safe place 🤗','Your smile melts my heart 😍','You brighten my darkest days 🌞','You’re my best friend 🥰','You are so thoughtful 🌸','You inspire me ✨','You are my sunshine ☀️','You believe in me 🌟','You’re my favorite hello 💖','You’re my forever 💍','You’re my lucky charm 🍀','Your kindness amazes me 🌷','You’re so beautiful 💃','You complete me 💞','You understand me 🎶','You make life magical 🦋','You make me proud 💪','You are my dream girl 🌈','I love you endlessly ❤️','You’re the melody to my heart 🎵','You make every day special 🌹','You’re the reason I believe in love 💘','You’re my sweetest destiny 💎'];
     const container = $('#heartsContainer'), box = $('#complimentBox');
     if(!container || !box) return;
     compliments.forEach(c=>{
@@ -381,12 +380,12 @@ document.addEventListener('DOMContentLoaded', function () {
      ============================ */
   (function galleryInit(){
     const quotes = [
-      "I love you not only for what you are, but for what I am when I am with you. — Roy Croft",
-      "You are my today and all of my tomorrows. — Leo Christopher",
+      "I love you not only for what you are, but for what I am when I am with you. ",
+      "You are my today and all of my tomorrows",
       "I look at you and see the rest of my life in front of my eyes.",
-      "You are every reason, every hope, and every dream I've ever had. — Nicholas Sparks",
-      "My heart is perfect because you are inside. — Unknown",
-      "Where there is love there is life. — Mahatma Gandhi"
+      "You are every reason, every hope, and every dream I've ever had",
+      "My heart is perfect because you are inside",
+      "Where there is love there is life. "
     ];
     $('#randomQuote')?.addEventListener('click', ()=> $('#quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
 
@@ -524,4 +523,5 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
