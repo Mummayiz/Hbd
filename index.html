@@ -384,23 +384,92 @@ document.addEventListener('DOMContentLoaded', function () {
       "You are my today and all of my tomorrows",
       "I look at you and see the rest of my life in front of my eyes.",
       "You are every reason, every hope, and every dream I've ever had",
-      "My heart is perfect because you are inside",
+      "You are the love of my Life",
       "Where there is love there is life. "
     ];
     $('#randomQuote')?.addEventListener('click', ()=> $('#quoteBox').innerText = quotes[Math.floor(Math.random()*quotes.length)]);
 
-    function openLightbox(type, src){
-      const overlay = document.createElement('div'); overlay.className='lb-overlay'; overlay.tabIndex = 0;
-      const closeBtn = document.createElement('button'); closeBtn.className='lb-close'; closeBtn.innerText='✕'; closeBtn.addEventListener('click', ()=> overlay.remove());
-      let media;
-      if(type === 'image'){ media = document.createElement('img'); media.src = src; media.className='lb-media'; media.alt = 'Photo'; }
-      else { media = document.createElement('video'); media.src = src; media.className='lb-media'; media.controls = true; media.autoplay = true; media.playsInline = true; }
-      overlay.appendChild(closeBtn); overlay.appendChild(media);
-      overlay.addEventListener('click', (e)=> { if(e.target === overlay) overlay.remove(); });
-      document.body.appendChild(overlay);
-      function onKey(e){ if(e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); } }
-      document.addEventListener('keydown', onKey);
-    }
+    function openLightbox(type, src, caption){
+  // create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'lb-overlay';
+  overlay.tabIndex = 0;
+  overlay.style.zIndex = 99999;
+
+  // close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'lb-close';
+  closeBtn.innerText = '✕';
+  closeBtn.addEventListener('click', () => overlay.remove());
+
+  // container for media (image or video)
+  let media;
+
+  if (type === 'image') {
+    media = document.createElement('img');
+    media.className = 'lb-media';
+    media.alt = caption || 'Photo';
+    media.src = src;
+    media.loading = 'eager';
+  } else {
+    media = document.createElement('video');
+    media.className = 'lb-media';
+    media.controls = true;
+    media.playsInline = true;
+    media.autoplay = false;
+    media.src = src;
+    media.load();
+
+    media.play().then(()=>{}).catch(err => {
+      console.warn('Autoplay blocked or play failed for', src, err);
+      const playHint = document.createElement('div');
+      playHint.style.position = 'absolute';
+      playHint.style.bottom = '18px';
+      playHint.style.left = '50%';
+      playHint.style.transform = 'translateX(-50%)';
+      playHint.style.background = 'rgba(0,0,0,0.35)';
+      playHint.style.padding = '8px 12px';
+      playHint.style.borderRadius = '999px';
+      playHint.style.color = '#fff';
+      playHint.style.fontSize = '14px';
+      playHint.style.zIndex = 10001;
+      playHint.style.cursor = 'pointer';
+      playHint.innerText = '▶ Tap to play';
+      playHint.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        media.play().catch(()=>{});
+        if (playHint && playHint.parentElement) playHint.remove();
+      });
+      overlay.appendChild(playHint);
+      media.addEventListener('play', () => { if (playHint && playHint.parentElement) playHint.remove(); });
+    });
+  }
+
+  overlay.appendChild(closeBtn);
+  overlay.appendChild(media);
+
+  if (caption) {
+    const cap = document.createElement('div');
+    cap.style.color = '#fff';
+    cap.style.marginTop = '12px';
+    cap.style.textAlign = 'center';
+    cap.style.zIndex = 10001;
+    cap.innerText = caption;
+    overlay.appendChild(cap);
+  }
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+
+  function onKey(e){
+    if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); }
+  }
+  document.addEventListener('keydown', onKey);
+
+  document.body.appendChild(overlay);
+}
+
 
     const gallery = $('#gallery');
     if(gallery) gallery.addEventListener('click', (e)=> {
@@ -523,5 +592,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
