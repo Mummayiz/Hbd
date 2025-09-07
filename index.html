@@ -133,45 +133,65 @@
         </section>
       </section>
 
-      <!-- QUOTES / GALLERY VIEW (simplified to 3 parts, no captions) -->
-      <section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
-        <h2 class="lead">Romantic Quotes</h2>
+      <!-- QUOTES / GALLERY VIEW (with +2 images +2 videos) -->
+<section id="view-quotes" class="view" aria-hidden="true" style="display:none; padding-top:8px;">
+  <h2 class="lead">Romantic Quotes</h2>
 
-        <!-- small quotes music player -->
-        <div class="quotes-player" role="region" aria-label="Quotes music player">
-          <label for="quotesSongSelect" style="font-weight:700;color:#856b79;margin-right:6px">Play song:</label>
-          <select id="quotesSongSelect" aria-label="Select romantic song">
-            <option value="rom1">Romantic Song 1</option>
-            <option value="rom2">Romantic Song 2</option>
-            <option value="rom3">Romantic Song 3</option>
-          </select>
-          <button id="quotesPlay" aria-pressed="false">Play ▶</button>
-          <span id="quotesAudioStatus" style="margin-left:10px;font-size:13px;color:#856b79"></span>
-        </div>
+  <!-- small quotes music player -->
+  <div class="quotes-player" role="region" aria-label="Quotes music player">
+    <label for="quotesSongSelect" style="font-weight:700;color:#856b79;margin-right:6px">Play song:</label>
+    <select id="quotesSongSelect" aria-label="Select romantic song">
+      <option value="rom1">Romantic Song 1</option>
+      <option value="rom2">Romantic Song 2</option>
+      <option value="rom3">Romantic Song 3</option>
+    </select>
+    <button id="quotesPlay" aria-pressed="false">Play ▶</button>
+    <span id="quotesAudioStatus" style="margin-left:10px;font-size:13px;color:#856b79"></span>
+  </div>
 
-        <!-- quote box -->
-        <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
-        <div class="actions" style="margin-top:12px">
-          <button id="randomQuote" class="cta">Random Quote</button>
-        </div>
+  <!-- quote box -->
+  <div class="quote" id="quoteBox">"Where there is love there is life." — Mahatma Gandhi</div>
+  <div class="actions" style="margin-top:12px">
+    <button id="randomQuote" class="cta">Random Quote</button>
+  </div>
 
-        <!-- gallery (only your 3 uploaded pictures, no captions) -->
-        <section aria-label="Gallery">
-          <div class="grid" id="gallery">
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi1.jpg">
-              <img data-src="assets/madi1.jpg" loading="lazy" alt="Memory 1" class="lazy-img">
-            </div>
+  <!-- gallery (now 5 images + 2 videos) -->
+  <section aria-label="Gallery">
+    <div class="grid" id="gallery">
+      <!-- existing three images -->
+      <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi1.jpg">
+        <img data-src="assets/madi1.jpg" loading="lazy" alt="Memory 1" class="lazy-img">
+      </div>
 
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi2.jpg">
-              <img data-src="assets/madi2.jpg" loading="lazy" alt="Memory 2" class="lazy-img">
-            </div>
+      <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi2.jpg">
+        <img data-src="assets/madi2.jpg" loading="lazy" alt="Memory 2" class="lazy-img">
+      </div>
 
-            <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi3.jpg">
-              <img data-src="assets/madi3.jpg" loading="lazy" alt="Memory 3" class="lazy-img">
-            </div>
-          </div>
-        </section>
-      </section>
+      <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi3.jpg">
+        <img data-src="assets/madi3.jpg" loading="lazy" alt="Memory 3" class="lazy-img">
+      </div>
+
+      <!-- NEW: two additional images -->
+      <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi4.jpg">
+        <img data-src="assets/madi4.jpg" loading="lazy" alt="Memory 4" class="lazy-img">
+      </div>
+
+      <div class="card-media" role="button" tabindex="0" data-type="image" data-src="assets/madi5.jpg">
+        <img data-src="assets/madi5.jpg" loading="lazy" alt="Memory 5" class="lazy-img">
+      </div>
+
+      <!-- NEW: two videos (poster optional) -->
+      <div class="card-media" role="button" tabindex="0" data-type="video" data-src="assets/clip1.mp4">
+        <video data-src="assets/clip1.mp4" poster="" muted playsinline class="lazy-video"></video>
+      </div>
+
+      <div class="card-media" role="button" tabindex="0" data-type="video" data-src="assets/clip2.mp4">
+        <video data-src="assets/clip2.mp4" poster="" muted playsinline class="lazy-video"></video>
+      </div>
+    </div>
+  </section>
+</section>
+
     </main>
 
     <footer><p style="margin:18px 0 0">Made with ❤️ by Mummayiz • <span id="year"></span></p></footer>
@@ -504,3 +524,4 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
